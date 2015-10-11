@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace SyncthingApi.Beans
+namespace SyncthingApi.Data
 {
     [DataContract]
-    public class Folder
+    public class FolderData
     {
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         private string id;
@@ -26,9 +26,9 @@ namespace SyncthingApi.Beans
         }
         
         [DataMember(Name = "devices", IsRequired = false, EmitDefaultValue = false)]
-        private List<Device> devices;
+        private List<DeviceData> devices;
 
-        public List<Device> Devices
+        public List<DeviceData> Devices
         {
             get { return this.devices; }
         }

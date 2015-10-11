@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace SyncthingApi.Beans
+namespace SyncthingApi.Data
 {
     [DataContract]
-    public class Device
+    public class DeviceData
     {
         [DataMember(Name = "deviceID", IsRequired = true, EmitDefaultValue = true)]
         private string deviceID;

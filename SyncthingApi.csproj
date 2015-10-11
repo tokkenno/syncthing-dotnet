@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SyncthingApi</RootNamespace>
     <AssemblyName>SyncthingApi</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -48,13 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiException.cs" />
-    <Compile Include="Beans\ConfigurationOptions.cs" />
-    <Compile Include="Beans\Device.cs" />
-    <Compile Include="Beans\GuiConfiguration.cs" />
+    <Compile Include="Data\ConfigurationInSyncData.cs" />
+    <Compile Include="Data\ConfigurationOptionsData.cs" />
+    <Compile Include="Data\ConnectionData.cs" />
+    <Compile Include="Data\ConnectionsData.cs" />
+    <Compile Include="Data\DeviceData.cs" />
+    <Compile Include="Data\GuiConfigurationData.cs" />
     <Compile Include="RestClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Beans\Configuration.cs" />
-    <Compile Include="Beans\Folder.cs" />
+    <Compile Include="Data\ConfigurationData.cs" />
+    <Compile Include="Data\FolderData.cs" />
     <Compile Include="RestResponse.cs" />
   </ItemGroup>
   <ItemGroup>

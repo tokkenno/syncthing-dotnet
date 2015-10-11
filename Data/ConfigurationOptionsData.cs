@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace SyncthingApi.Beans
+namespace SyncthingApi.Data
 {
     [DataContract]
-    public class ConfigurationOptions
+    public class ConfigurationOptionsData
     {
         [DataMember(Name = "listenAddress", IsRequired = false, EmitDefaultValue = false)]
         private List<String> listenAddress;

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace SyncthingApi.Beans
+namespace SyncthingApi.Data
 {
     [DataContract]
-    public class GuiConfiguration
+    public class GuiConfigurationData
     {
         [DataMember(Name = "enabled", IsRequired = true, EmitDefaultValue = true)]
         private Boolean enabled;

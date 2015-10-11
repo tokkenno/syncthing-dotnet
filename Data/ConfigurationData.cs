@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace SyncthingApi.Beans
+namespace SyncthingApi.Data
 {
     [DataContract]
-    public class Configuration
+    public class ConfigurationData
     {
         [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
         private int version;
@@ -18,41 +18,41 @@ namespace SyncthingApi.Beans
         }
 
         [DataMember(Name = "folders", IsRequired = true, EmitDefaultValue = true)]
-        private List<Folder> folders;
+        private List<FolderData> folders;
 
-        public List<Folder> Folders
+        public List<FolderData> Folders
         {
             get { return this.folders; }
         }
 
         [DataMember(Name = "devices", IsRequired = true, EmitDefaultValue = true)]
-        private List<Device> devices;
+        private List<DeviceData> devices;
 
-        public List<Device> Devices
+        public List<DeviceData> Devices
         {
             get { return this.devices; }
         }
 
         [DataMember(Name = "ignoredDevices", IsRequired = true, EmitDefaultValue = true)]
-        private List<Device> ignoredDevices;
+        private List<DeviceData> ignoredDevices;
 
-        public List<Device> IgnoredDevices
+        public List<DeviceData> IgnoredDevices
         {
             get { return this.ignoredDevices; }
         }
 
         [DataMember(Name = "gui", IsRequired = true, EmitDefaultValue = true)]
-        private GuiConfiguration gui;
+        private GuiConfigurationData gui;
 
-        public GuiConfiguration GUI
+        public GuiConfigurationData GUI
         {
             get { return this.gui; }
         }
 
         [DataMember(Name = "options", IsRequired = true, EmitDefaultValue = true)]
-        private ConfigurationOptions options;
+        private ConfigurationOptionsData options;
 
-        public ConfigurationOptions Options
+        public ConfigurationOptionsData Options
         {
             get { return this.options; }
         }

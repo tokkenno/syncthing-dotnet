@@ -1,5 +1,5 @@
 ﻿using RestSharp;
-using SyncthingApi.Beans;
+using SyncthingApi.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
