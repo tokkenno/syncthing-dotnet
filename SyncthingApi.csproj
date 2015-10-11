@@ -53,6 +53,8 @@
     <Compile Include="Data\ConnectionData.cs" />
     <Compile Include="Data\ConnectionsData.cs" />
     <Compile Include="Data\DeviceData.cs" />
+    <Compile Include="Data\DiscoveryConnectionData.cs" />
+    <Compile Include="Data\DiscoveryData.cs" />
     <Compile Include="Data\GuiConfigurationData.cs" />
     <Compile Include="RestClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

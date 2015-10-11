@@ -50,7 +50,7 @@ namespace SyncthingApi
 
             return this.Deserialize<ConfigurationInSyncData>(res.Content);
         }
-        
+
         public ConnectionsData GetSystemConnections()
         {
             IRestResponse res = this.GET("/system/connections");
@@ -61,6 +61,27 @@ namespace SyncthingApi
             }
 
             return this.Deserialize<ConnectionsData>(res.Content);
+        }
+
+        public List<DiscoveryData> GetSystemDiscovery()
+        {
+            IRestResponse res = this.GET("/system/discovery");
+
+            if (res.ErrorException != null)
+            {
+                throw new ApiException(res.ErrorMessage);
+            }
+
+            Dictionary < String, List < DiscoveryConnectionData >> desdata = 
+                this.Deserialize<Dictionary<String, List<DiscoveryConnectionData>>>(res.Content);
+
+            List<DiscoveryData> toret = new List<DiscoveryData>();
+            foreach (KeyValuePair<String, List<DiscoveryConnectionData>> elem in desdata)
+            {
+                toret.Add(new DiscoveryData(elem.Key, elem.Value));
+            }
+
+            return toret;
         }
 
         private T Deserialize<T>(String content)
