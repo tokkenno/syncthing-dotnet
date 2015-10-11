@@ -20,27 +20,56 @@ namespace SyncthingApi
             this.apikey = apikey;
         }
 
-        public Configuration GetSystemConfig()
+        private IRestResponse GET(String path)
         {
-            var request = new RestRequest("rest/system/config", Method.GET);
+            var request = new RestRequest("rest" + path, Method.GET);
             request.AddHeader("X-API-Key", this.apikey);
+            return client.Execute(request);
+        }
 
-            IRestResponse res = client.Execute(request);
-
-            Console.WriteLine(res.ErrorMessage);
+        public ConfigurationData GetSystemConfig()
+        {
+            IRestResponse res = this.GET("/system/config");
 
             if (res.ErrorException != null)
             {
                 throw new ApiException(res.ErrorMessage);
             }
 
-            return this.Deserialize<Configuration>(res.Content);
+            return this.Deserialize<ConfigurationData>(res.Content);
+        }
+
+        public ConfigurationInSyncData GetSystemConfigInSync()
+        {
+            IRestResponse res = this.GET("/system/config/insync");
+
+            if (res.ErrorException != null)
+            {
+                throw new ApiException(res.ErrorMessage);
+            }
+
+            return this.Deserialize<ConfigurationInSyncData>(res.Content);
+        }
+        
+        public ConnectionsData GetSystemConnections()
+        {
+            IRestResponse res = this.GET("/system/connections");
+
+            if (res.ErrorException != null)
+            {
+                throw new ApiException(res.ErrorMessage);
+            }
+
+            return this.Deserialize<ConnectionsData>(res.Content);
         }
 
         private T Deserialize<T>(String content)
         {
-            try {
-                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(T));
+            try
+            {
+                DataContractJsonSerializerSettings settings = new DataContractJsonSerializerSettings();
+                settings.UseSimpleDictionaryFormat = true;
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(T), settings);
                 MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(content));
                 return (T)ser.ReadObject(ms);
             }
