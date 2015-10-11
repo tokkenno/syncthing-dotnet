@@ -27,6 +27,10 @@ namespace SyncthingApi
             return client.Execute(request);
         }
 
+        /// <summary>
+        /// GET /rest/system/config
+        /// </summary>
+        /// <returns>System configuration data</returns>
         public ConfigurationData GetSystemConfig()
         {
             IRestResponse res = this.GET("/system/config");
@@ -39,6 +43,10 @@ namespace SyncthingApi
             return this.Deserialize<ConfigurationData>(res.Content);
         }
 
+        /// <summary>
+        /// GET /rest/system/config/insync
+        /// </summary>
+        /// <returns></returns>
         public ConfigurationInSyncData GetSystemConfigInSync()
         {
             IRestResponse res = this.GET("/system/config/insync");
@@ -51,6 +59,10 @@ namespace SyncthingApi
             return this.Deserialize<ConfigurationInSyncData>(res.Content);
         }
 
+        /// <summary>
+        /// GET /rest/system/connections
+        /// </summary>
+        /// <returns>Connections info</returns>
         public ConnectionsData GetSystemConnections()
         {
             IRestResponse res = this.GET("/system/connections");
@@ -63,6 +75,10 @@ namespace SyncthingApi
             return this.Deserialize<ConnectionsData>(res.Content);
         }
 
+        /// <summary>
+        /// GET /rest/system/discovery
+        /// </summary>
+        /// <returns>List of discovery connections</returns>
         public List<DiscoveryData> GetSystemDiscovery()
         {
             IRestResponse res = this.GET("/system/discovery");
@@ -82,6 +98,86 @@ namespace SyncthingApi
             }
 
             return toret;
+        }
+
+        /// <summary>
+        /// GET /rest/system/error
+        /// </summary>
+        /// <returns>List of errors</returns>
+        public List<ErrorData> GetSystemError()
+        {
+            IRestResponse res = this.GET("/system/error");
+
+            if (res.ErrorException != null)
+            {
+                throw new ApiException(res.ErrorMessage);
+            }
+
+            return this.Deserialize<ErrorListData>(res.Content).Errors;
+        }
+
+        /// <summary>
+        /// GET /rest/system/ping
+        /// </summary>
+        /// <returns>True if server respond</returns>
+        public Boolean Ping()
+        {
+            IRestResponse res = this.GET("/system/error");
+
+            if (res.ErrorException != null)
+            {
+                return false;
+            }
+
+            return res.Content.Contains("pong");
+        }
+
+        /// <summary>
+        /// GET /rest/system/status
+        /// </summary>
+        /// <returns>Status info</returns>
+        public StatusData GetSystemStatus()
+        {
+            IRestResponse res = this.GET("/system/status");
+
+            if (res.ErrorException != null)
+            {
+                throw new ApiException(res.ErrorMessage);
+            }
+
+            return this.Deserialize<StatusData>(res.Content);
+        }
+
+        /// <summary>
+        /// GET /rest/system/upgrade
+        /// </summary>
+        /// <returns>Upgrade info</returns>
+        public UpgradeData GetSystemUpgrade()
+        {
+            IRestResponse res = this.GET("/system/upgrade");
+
+            if (res.ErrorException != null)
+            {
+                throw new ApiException(res.ErrorMessage);
+            }
+
+            return this.Deserialize<UpgradeData>(res.Content);
+        }
+
+        /// <summary>
+        /// GET /rest/system/version
+        /// </summary>
+        /// <returns>Version info</returns>
+        public VersionData GetSystemVersion()
+        {
+            IRestResponse res = this.GET("/system/version");
+
+            if (res.ErrorException != null)
+            {
+                throw new ApiException(res.ErrorMessage);
+            }
+
+            return this.Deserialize<VersionData>(res.Content);
         }
 
         private T Deserialize<T>(String content)
