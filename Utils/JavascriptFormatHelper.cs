@@ -11,7 +11,11 @@ namespace Syncthing.API.Utils
         public static DateTime ConvertTime(String jstime)
         {
             jstime = jstime.Remove(jstime.LastIndexOf(":"), 1);
-            return DateTime.ParseExact(jstime, "yyyy-MM-dd'T'HH:mm:ssK", System.Globalization.CultureInfo.InvariantCulture);
+
+            if (jstime.Contains("."))
+                return DateTime.ParseExact(jstime, "yyyy-MM-dd'T'HH:mm:ss.fffffffffK", System.Globalization.CultureInfo.InvariantCulture);
+            else
+                return DateTime.ParseExact(jstime, "yyyy-MM-dd'T'HH:mm:ssK", System.Globalization.CultureInfo.InvariantCulture);
         }
     }
 }
