@@ -1,30 +1,17 @@
 ﻿using RestSharp;
-using SyncthingApi.Data;
+using Syncthing.API.Data;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace SyncthingApi
+namespace Syncthing.API
 {
-    public class RestClient
+    public class APIRestClient : Syncthing.API.Net.RestClient
     {
-        private RestSharp.RestClient client;
-        private string apikey;
 
-        public RestClient(String url, String apikey)
+        public APIRestClient(String url, String apikey) : base(url, apikey)
         {
-            this.client = new RestSharp.RestClient(url);
-            this.apikey = apikey;
-        }
-
-        private IRestResponse GET(String path)
-        {
-            var request = new RestRequest("rest" + path, Method.GET);
-            request.AddHeader("X-API-Key", this.apikey);
-            return client.Execute(request);
         }
 
         /// <summary>
@@ -180,20 +167,20 @@ namespace SyncthingApi
             return this.Deserialize<VersionData>(res.Content);
         }
 
-        private T Deserialize<T>(String content)
+        /// <summary>
+        /// GET /rest/db/browse
+        /// </summary>
+        /// <returns>Version info</returns>
+        public DirectoryData GetDbBrowse(String folder)
         {
-            try
+            IRestResponse res = this.GET("/db/browse?folder=" + folder);
+
+            if (res.ErrorException != null)
             {
-                DataContractJsonSerializerSettings settings = new DataContractJsonSerializerSettings();
-                settings.UseSimpleDictionaryFormat = true;
-                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(T), settings);
-                MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(content));
-                return (T)ser.ReadObject(ms);
+                throw new ApiException(res.ErrorMessage);
             }
-            catch (Exception e)
-            {
-                throw new ApiException("Serialization error. " + e.Message);
-            }
+
+            return DirectoryData.DeserializeJson(res.Content);
         }
     }
 }
