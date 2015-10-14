@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncthing.API.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -20,9 +21,9 @@ namespace Syncthing.API.Data
         [DataMember(Name = "at", IsRequired = false, EmitDefaultValue = false)]
         private string at;
 
-        public string At
+        public DateTime At
         {
-            get { return this.at; }
+            get { return JavascriptFormatHelper.ConvertTime(this.at); }
         }
 
         [DataMember(Name = "clientVersion", IsRequired = false, EmitDefaultValue = false)]

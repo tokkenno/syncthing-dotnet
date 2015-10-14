@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using Syncthing.API.Utils;
 
 namespace Syncthing.API.Data
 {
@@ -21,9 +22,9 @@ namespace Syncthing.API.Data
         [DataMember(Name = "time", IsRequired = true, EmitDefaultValue = false)]
         private string time;
 
-        public string Time
+        public DateTime Time
         {
-            get { return this.time; }
+            get { return JavascriptFormatHelper.ConvertTime(time); }
         }
     }
 }

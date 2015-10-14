@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncthing.API.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -20,9 +21,9 @@ namespace Syncthing.API.Data
         [DataMember(Name = "Seen", IsRequired = true, EmitDefaultValue = false)]
         private string seen;
 
-        public string Seen
+        public DateTime Seen
         {
-            get { return this.seen; }
+            get { return JavascriptFormatHelper.ConvertTime(this.seen); }
         }
     }
 }
