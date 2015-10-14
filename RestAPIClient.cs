@@ -7,10 +7,9 @@ using System.Text;
 
 namespace Syncthing.API
 {
-    public class APIRestClient : Syncthing.API.Net.RestClient
+    public class RestAPIClient : Net.RestClient
     {
-
-        public APIRestClient(String url, String apikey) : base(url, apikey)
+        public RestAPIClient(String url, String apikey) : base(url, apikey)
         {
         }
 

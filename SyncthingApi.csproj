@@ -63,8 +63,9 @@
     <Compile Include="Data\StatusData.cs" />
     <Compile Include="Data\UpgradeData.cs" />
     <Compile Include="Data\VersionData.cs" />
+    <Compile Include="EventAPIClient.cs" />
     <Compile Include="Net\RestClient.cs" />
-    <Compile Include="APIRestClient.cs" />
+    <Compile Include="RestAPIClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\ConfigurationData.cs" />
     <Compile Include="Data\FolderData.cs" />
