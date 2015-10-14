@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SyncthingApi.Data
+namespace Syncthing.API.Data
 {
     public class DiscoveryData
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace SyncthingApi.Data
+namespace Syncthing.API.Data
 {
     [DataContract]
     public class ConnectionsData

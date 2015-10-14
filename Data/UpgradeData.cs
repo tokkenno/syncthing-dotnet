@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SyncthingApi.Data
+namespace Syncthing.API.Data
 {
     [DataContract]
     public class UpgradeData

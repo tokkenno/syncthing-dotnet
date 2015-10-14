@@ -7,7 +7,7 @@
     <ProjectGuid>{280F8899-3D74-46D2-85D3-6BD405B4F7A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SyncthingApi</RootNamespace>
+    <RootNamespace>Syncthing.API</RootNamespace>
     <AssemblyName>SyncthingApi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
