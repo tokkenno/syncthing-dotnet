@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiException.cs" />
+    <Compile Include="Data\DirectoryData.cs" />
     <Compile Include="Data\ConfigurationInSyncData.cs" />
     <Compile Include="Data\ConfigurationOptionsData.cs" />
     <Compile Include="Data\ConnectionData.cs" />
@@ -57,15 +58,17 @@
     <Compile Include="Data\DiscoveryData.cs" />
     <Compile Include="Data\ErrorData.cs" />
     <Compile Include="Data\ErrorListData.cs" />
+    <Compile Include="Data\FileData.cs" />
     <Compile Include="Data\GuiConfigurationData.cs" />
     <Compile Include="Data\StatusData.cs" />
     <Compile Include="Data\UpgradeData.cs" />
     <Compile Include="Data\VersionData.cs" />
-    <Compile Include="RestClient.cs" />
+    <Compile Include="Net\RestClient.cs" />
+    <Compile Include="APIRestClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\ConfigurationData.cs" />
     <Compile Include="Data\FolderData.cs" />
-    <Compile Include="RestResponse.cs" />
+    <Compile Include="Utils\JavascriptFormatHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
